@@ -36,6 +36,7 @@ function sleep(ms) {
 
 // default
 async function bubbleSort(){
+    var startTime = performance.now();
     let arr = rNums;
     let n = arr.length;
     
@@ -57,8 +58,11 @@ async function bubbleSort(){
         await sleep(300);
     }
 
+    // Finding time elapsed
+    var endTime = performance.now();
+
     // Displaying final output and other sorts
-    document.getElementById("sortedNums").innerHTML = "Final sorted array = [" + arr + "]";
+    document.getElementById("sortedNums").innerHTML = "Final sorted array = [" + arr + "] <br> This took " +((endTime-startTime)/1000).toFixed(2)+ " seconds";
     document.getElementById("sortBtn").disabled = false;
     var div = document.getElementById("sortBtns");
     if(div.style.display==="none"){ div.style.display = "block"}
