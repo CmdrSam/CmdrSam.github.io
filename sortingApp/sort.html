@@ -14,6 +14,7 @@
             color: white;
             text-align: center;
         } 
+        
      </style>
 
 </head>
@@ -21,8 +22,13 @@
     <h1>Saumya's Sort'O'meter</h1>
     <br>
     <p>How many numbers do you want to sort?</p>
-    <input type="text" id="numberOfElements">
-    <button onclick="disp()" id="sortBtn">SORT!</button>
+
+    <div class="input-group" style="padding-left: 40%;padding-right: 40%;">
+        <input type="text" id="numberOfElements" class="form-control">
+        <button onclick="disp()" id="sortBtn" class="btn btn-secondary">SORT!</button>
+    </div>
+
+    
     <p id="show"></p>
     <div>
         <p id="randNums"></p>
