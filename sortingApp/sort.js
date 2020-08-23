@@ -69,17 +69,56 @@ async function bubbleSort(){
     var endTime = performance.now();
 
     // Displaying final output and other sorts
-    document.getElementById("sortedNums").innerHTML = "<a class='lead'>Final sorted array = </a>[" + arr + "] <br><a class='lead'> This took </a>" +((endTime-startTime)/1000).toFixed(2)+ " seconds";
+    let timeTaken = (((endTime-startTime - 300*(arr.length-1)))/1000).toFixed(2); 
+    document.getElementById("sortedNums").innerHTML = "<a class='lead'>Final sorted array = </a>[" + arr + "] <br><a class='lead'> This took </a>" +timeTaken+ " seconds";
     document.getElementById("sortBtn").disabled = false;
     var div = document.getElementById("sortBtns");
     if(div.style.display==="none"){ div.style.display = "block"}
+    console.log(mergeSort(rNums));
 }
 
 
 // Merge sort
-async function mergeSort(){
-    alert("I am working on that :P");
+
+function merge(leftArr, rightArr) {
+    var sortedArr = [];
+      while (leftArr.length && rightArr.length) {
+        if (leftArr[0] <= rightArr[0]) {
+          sortedArr.push(leftArr[0]);
+          leftArr = leftArr.slice(1)
+       } else {
+          sortedArr.push(rightArr[0]);
+          rightArr = rightArr.slice(1)
+         }
+       }
+      while (leftArr.length)
+        sortedArr.push(leftArr.shift());
+      while (rightArr.length)
+        sortedArr.push(rightArr.shift());
+      return sortedArr;
+    }
+function mergeSort(arr) {
+    if (arr.length < 2) {
+    return arr; }
+    else {
+    var midpoint = parseInt(arr.length / 2);
+    var leftArr   = arr.slice(0, midpoint);
+    var rightArr  = arr.slice(midpoint, arr.length);
+    return merge(mergeSort(leftArr), mergeSort(rightArr));
+    
+    }
 }
+
+function MergeSort(){
+    let startTime = performance.now();
+    let ans = mergeSort(rNums);
+    displayCanv(ans);
+    let endTime = performance.now();
+    let timeTaken = ((endTime-startTime)/1000).toFixed(2);
+    console.log(ans);
+    document.getElementById("mergeOutput").innerHTML = "<a class='lead'> Merge Sort took </a>" +timeTaken+ " seconds";
+}
+     
 
 // Heap sort
 async function heapSort(){
