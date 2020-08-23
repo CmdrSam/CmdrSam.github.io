@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove white backgroud</title>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+    </script>
+    <script src="/removeWhite/removeWhiteBackground.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <style type="text/css">
+        body { 
+            background: #424752;
+            color: white;
+        }
+        a{
+            color:white;
+        }
+        
+     </style>
+</head>
+<body>
+      
+    <h1 class="display-2">Remove white background!</h1>
+    <p class="lead">Replace white background with any awesome image!</p>
+    <canvas id="can1"></canvas>
+    <canvas id="can2"></canvas>
+    <br>
+    <p>Upload your image</p>
+    <input type="file" multiple="false" accept="image/*" id="finput1" onchange="upload1()">
+    
+    <p>Upload background image</p>
+    <input type="file" multiple="false" accept="image/*" id="finput2" onchange="upload2()">
+    
+    <input type='button' value='Combine' onclick='greenScreen()' style="padding:10px;background-color:#4de34d;float:right">
+    <div id='sliderDiv'>
+    <p>Slide and mix the backgroud</p>
+    <input type="range" min="500" max="760"  value="500" id='sldr' oninput='greenScreen()'>
+    </div>
+</body>
+</html>
