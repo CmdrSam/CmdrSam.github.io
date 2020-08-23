@@ -3,6 +3,7 @@ disp = ()=>{
     var n = document.getElementById("numberOfElements").value;
     document.getElementById("show").innerHTML = "Generating array of "+n+" random numbers";
     genRandom(n);
+    document.getElementById("sortBtn").disabled = true;
 }
 
 genRandom = (num)=>{
@@ -30,9 +31,10 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+///////////////////////////////////////////////////////////////////////////////////
+////////////////////////// Sorting algorithms ////////////////////////////////////
 
-// Sorting algorithms
-
+// default
 async function bubbleSort(){
     let arr = rNums;
     let n = arr.length;
@@ -54,7 +56,26 @@ async function bubbleSort(){
         // Waiting for 5000/array length
         await sleep(300);
     }
-    document.getElementById("sortedNums").innerHTML = "[" + arr + "]"; 
+
+    // Displaying final output and other sorts
+    document.getElementById("sortedNums").innerHTML = "Final sorted array = [" + arr + "]";
+    document.getElementById("sortBtn").disabled = false;
+    var div = document.getElementById("sortBtns");
+    if(div.style.display==="none"){ div.style.display = "block"}
 }
+
+
+// Merge sort
+
+
+// Heap sort
+
+
+
+//Quick sort
+
+
+
+
 
 
