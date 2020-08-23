@@ -13,29 +13,44 @@
         body { 
             background: #424752;
             color: white;
+            padding-left: 40px;
         }
         a{
             color:white;
+        }
+        canvas{
+            width: 400px;
+            height: 300px;
         }
         
      </style>
 </head>
 <body>
       
-    <h1 class="display-2">Remove white background!</h1>
+    <h1 class="display-2" style="text-align: center;">Remove white background!</h1>
     <p class="lead">Replace white background with any awesome image!</p>
+    
+    <div class="row" >
+        <div class="col">
+            <p class="lead">Upload your image</p>
+            <input type="file" multiple="false" accept="image/*" id="finput1" onchange="upload1()">
+            
+            <p class="lead">Upload background image</p>
+            <input type="file" multiple="false" accept="image/*" id="finput2" onchange="upload2()">   
+        </div>
+        <div class="col">
+            <input type='button' value='Combine' class="btn btn-secondary" onclick='greenScreen()' style="margin-top: 80px;;">
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <br>
     <canvas id="can1"></canvas>
     <canvas id="can2"></canvas>
-    <br>
-    <p>Upload your image</p>
-    <input type="file" multiple="false" accept="image/*" id="finput1" onchange="upload1()">
     
-    <p>Upload background image</p>
-    <input type="file" multiple="false" accept="image/*" id="finput2" onchange="upload2()">
     
-    <input type='button' value='Combine' onclick='greenScreen()' style="padding:10px;background-color:#4de34d;float:right">
     <div id='sliderDiv'>
-    <p>Slide and mix the backgroud</p>
+    <p class="lead">Slide and mix the backgroud (It will take few seconds though)</p>
     <input type="range" min="500" max="760"  value="500" id='sldr' oninput='greenScreen()'>
     </div>
 </body>
