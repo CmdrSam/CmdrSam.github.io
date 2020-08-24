@@ -1,8 +1,10 @@
 var rNums = [];
 disp = ()=>{
+    
     var n = document.getElementById("numberOfElements").value;
     //document.getElementById("show").innerHTML = ;
     if(n<50){
+        rNums = [];
         genRandom(n);
         document.getElementById("sortBtn").disabled = true;
     }
@@ -24,14 +26,14 @@ genRandom = (num)=>{
 
 let displayCanv = (arr)=>{
     let canv = document.getElementById("test");
-            var context = canv.getContext("2d");
-            context.clearRect(0, 0, canv.width, canv.height);
+    var context = canv.getContext("2d");
+    context.clearRect(0, 0, canv.width, canv.height);
 
-            for(let k=0;k<arr.length;k++){
-                
-                context.fillStyle = "#86e03d";
-                context.fillRect(5+5*k,5,3,arr[k]*10);
-            }
+    for(let k=0;k<arr.length;k++){
+        
+        context.fillStyle = "#86e03d";
+        context.fillRect(5+5*k,5,3,arr[k]*10);
+    }
 }
 
 function sleep(ms) {
@@ -69,7 +71,7 @@ async function bubbleSort(){
     var endTime = performance.now();
 
     // Displaying final output and other sorts
-    let timeTaken = (((endTime-startTime - 300*(arr.length-1)))/1000).toFixed(2); 
+    let timeTaken = (((endTime-startTime - 300*(arr.length-1)))/1000).toFixed(5); 
     document.getElementById("sortedNums").innerHTML = "<a class='lead'>Final sorted array = </a>[" + arr + "] <br><a class='lead'> This took </a>" +timeTaken+ " seconds";
     document.getElementById("sortBtn").disabled = false;
     var div = document.getElementById("sortBtns");
@@ -82,20 +84,21 @@ async function bubbleSort(){
 
 function merge(leftArr, rightArr) {
     var sortedArr = [];
-      while (leftArr.length && rightArr.length) {
-        if (leftArr[0] <= rightArr[0]) {
-          sortedArr.push(leftArr[0]);
-          leftArr = leftArr.slice(1)
-       } else {
-          sortedArr.push(rightArr[0]);
-          rightArr = rightArr.slice(1)
-         }
-       }
-      while (leftArr.length)
-        sortedArr.push(leftArr.shift());
-      while (rightArr.length)
-        sortedArr.push(rightArr.shift());
-      return sortedArr;
+    while (leftArr.length && rightArr.length) {
+    if (leftArr[0] <= rightArr[0]) {
+        sortedArr.push(leftArr[0]);
+        leftArr = leftArr.slice(1)
+    } else {
+        sortedArr.push(rightArr[0]);
+        rightArr = rightArr.slice(1)
+        }
+    }
+    while (leftArr.length)
+    sortedArr.push(leftArr.shift());
+    while (rightArr.length)
+    sortedArr.push(rightArr.shift());
+    
+    return sortedArr;
     }
 function mergeSort(arr) {
     if (arr.length < 2) {
@@ -104,7 +107,9 @@ function mergeSort(arr) {
     var midpoint = parseInt(arr.length / 2);
     var leftArr   = arr.slice(0, midpoint);
     var rightArr  = arr.slice(midpoint, arr.length);
-    return merge(mergeSort(leftArr), mergeSort(rightArr));
+    var ans = merge(mergeSort(leftArr), mergeSort(rightArr));
+    displayCanv(ans);
+    return ans;
     
     }
 }
@@ -114,7 +119,7 @@ function MergeSort(){
     let ans = mergeSort(rNums);
     displayCanv(ans);
     let endTime = performance.now();
-    let timeTaken = ((endTime-startTime)/1000).toFixed(2);
+    let timeTaken = ((endTime-startTime)/1000).toFixed(4);
     console.log(ans);
     document.getElementById("mergeOutput").innerHTML = "<a class='lead'> Merge Sort took </a>" +timeTaken+ " seconds";
 }
