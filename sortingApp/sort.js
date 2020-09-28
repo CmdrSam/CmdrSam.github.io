@@ -24,6 +24,8 @@ genRandom = (num)=>{
     bubbleSort();
 }
 
+// Display canvas
+
 let displayCanv = (arr)=>{
     let canv = document.getElementById("test");
     var context = canv.getContext("2d");
@@ -63,7 +65,7 @@ async function bubbleSort(){
             
         }
         
-        // Waiting for 5000/array length
+        // Waiting for 300 milisecond length
         await sleep(300);
     }
 
@@ -139,7 +141,21 @@ async function quickSort(){
 
 //Selection sort
 async function selectionSort(){
-    alert("I am working on that :P");
+    let arr = rNums;
+    let min=arr[0];
+    for(let i=0;i<arr.length;i++){
+        for(let j=i;j<arr.length;j++){
+            if(arr[j]<min){
+                min = arr[j];
+            }
+        }
+        arr[i] = min;
+        min = arr[i+1];
+        displayCanv(arr);
+        await sleep(300);
+    }
+    
+    console.log(arr);
 }
 
 
